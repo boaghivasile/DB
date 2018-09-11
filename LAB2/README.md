@@ -1,4 +1,4 @@
-<p><b> Task 1 </b></p>
+<p><b><h3> Task 1 </h3></b></p>
 
 <img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task1.png" />
 Task 2
