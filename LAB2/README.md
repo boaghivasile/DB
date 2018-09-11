@@ -1,2 +1,22 @@
-Task1 
+Task 1 
 <img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task1.png" />
+Task 2
+<img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task2A.png" />
+<img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task2B.png" />
+Task 3
+<img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task3A.png" />
+<img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task3B.png" />
+<img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task3C.png" />
+<img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task3D.png" />
+<img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task3E.png" />
+<img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task3F.png" />
+<img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task3G.png" />
+Task 4
+<img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task4A.png" />
+<img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task4B.png" />
+<img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task4C.png" />
+<img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task4D.png" />
+<img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task4E.png" />
+<img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task4F.png" />
+<img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task4G.png" />
+<img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task4H.png" />
