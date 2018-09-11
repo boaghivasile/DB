@@ -1,4 +1,5 @@
-Task 1 
+<p><b> Task 1 </b></p>
+
 <img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task1.png" />
 Task 2
 <img src="https://github.com/boaghivasile/DB/blob/master/LAB2/Task2A.png" />
