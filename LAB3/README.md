@@ -9,14 +9,16 @@
 
 <p><b><h3> Task 3 </h3></b></p> 
 
-<p><b>< Diagram </b></p> 
+<p><b> Diagram </b></p> 
 <img src="https://github.com/boaghivasile/DB/blob/master/LAB3/Screens/Diagram1.png" />
   
 <p><b><h3> Task 4 </h3></b></p> 
 
-<p><b>< Table Grupe </b></p> 
+<p><b> Table Grupe </b></p> 
 <img src="https://github.com/boaghivasile/DB/blob/master/LAB3/Screens/Grupe.png" />
-<p><b>< Table Discipline </b></p>  
+
+<p><b> Table Discipline </b></p>  
 <img src="https://github.com/boaghivasile/DB/blob/master/LAB3/Screens/Discipline.png" />
-<p><b>< Back Up</b></p> 
+
+<p><b> Back Up</b></p> 
 <img src="https://github.com/boaghivasile/DB/blob/master/LAB3/Screens/Backup2.png" />
