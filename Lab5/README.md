@@ -23,5 +23,5 @@ RAISERRROR.  </b></p>
 <img src="https://github.com/boaghivasile/DB/blob/master/Lab5/Ex4/Laborator5Ex4a.png" />
 <img src="https://github.com/boaghivasile/DB/blob/master/Lab5/Ex4/Laborator5Ex4b.png" />
 
-<a href="https://github.com/boaghivasile/DB/blob/master/Lab5/Ex4/Laborator5.txt">Continue</a>
+<a href="https://github.com/boaghivasile/DB/blob/master/Lab5/Ex4/Laborator5.txt">Click to access the notepad file</a>
 
