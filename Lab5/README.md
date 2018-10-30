@@ -1,8 +1,8 @@
 
 <p><b><h2> Ex.1 </h2></b></p>
 
-<p> Completati urmatorul cod pentru a afi~a eel mai mare numar dintre cele trei numere prezentate:  </p>
-<https://github.com/boaghivasile/DB/blob/master/Lab5/Ex1/Laborator5Ex1.sql />
+<p> Completati urmatorul cod pentru a afisa cel mai mare numar dintre cele trei numere prezentate:  </p>
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab5/Ex1/Laborator5Ex1.png"  />
 
 <p><b><h2> Task 2 </h2></b></p> 
 
