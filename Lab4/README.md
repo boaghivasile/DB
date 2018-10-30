@@ -19,7 +19,7 @@ prof. lon. </b></p>
 
 <p><b> Gasiti denumirile disciplinelor ~i media notelor pe disciplina. Afi~ati numai disciplinele cu medii
 mai mari de 7.0.  </b></p> 
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab4/Screen/Laborator4(b).png" />
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab4/Screen/Laborator4.png" />
 
 
 <p><b><h3> File [click here] https://github.com/boaghivasile/DB/blob/master/Lab4/Screen/Laborator4.sql </h3></b></p> 
