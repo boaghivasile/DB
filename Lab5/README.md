@@ -6,20 +6,22 @@
 
 <p><b><h2> Task 2 </h2></b></p> 
 
-<p> Sa se obtina numaru! de discipline predate de fiecare profesor (Nume_Profesor, Prenume _ Profesor). </p>
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab4/Screen/Laborator4.png" />
+<p> Afisati primele zece date (numele, prenumele studentului) in functie de valoarea notei (cu exceptia
+notelor 6 si 8) a studentului la primul test al disciplinei Baze de date, folosind structura de
+altemativa IF. .. ELSE. Sa se foloseasca variabilele. </p>
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab5/Ex2/LABorator5Ex2.png" />
 
 <p><b><h2> Task 3 </h2></b></p> 
 
-<p><b> Afi~ati studentii (identificatorii) care au sustinut (evaluare examen) la toate disciplinele predate de
-prof. lon. </b></p> 
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab4/Screen/Laborato4(a).png" />
+<p><b> Rezolvati aceesi sarcina, 1, apeland la structura selectiva CASE. </b></p> 
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab5/Ex3/Laborator5Ex3.png" />
   
 <p><b><h2> Task 4 </h2></b></p> 
 
-<p><b> Gasiti denumirile disciplinelor ~i media notelor pe disciplina. Afi~ati numai disciplinele cu medii
-mai mari de 7.0.  </b></p> 
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab4/Screen/Laborator4(b).png" />
+<p><b> Modificati exercitiile din sarcinile 1 si 2 pentru a include procesarea erorilor cu TRY si CATCH, si
+RAISERRROR.  </b></p> 
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab5/Ex4/Laborator5Ex4a.png" />
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab5/Ex4/Laborator5Ex4b.png" />
 
 
 <p><b><h2> File [click here] https://github.com/boaghivasile/DB/blob/master/Lab4/Screen/Laborator4.sql </h2></b></p> 
