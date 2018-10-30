@@ -24,5 +24,6 @@ RAISERRROR.  </b></p>
 <img src="https://github.com/boaghivasile/DB/blob/master/Lab5/Ex4/Laborator5Ex4b.png" />
 
 
-<p><b><h2> File [click here] https://github.com/boaghivasile/DB/blob/master/Lab4/Screen/Laborator4.sql </h2></b></p> 
+<input type="submit" value="Go to my link location" 
+    onclick="window.location='/my/link/location';" /> 
 
