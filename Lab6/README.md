@@ -1,17 +1,19 @@
 
 
 <p><b><h2> Ex.1 </h2></b></p>
+<p> Să se scrie o instrucțiune T-SQL, care ar popula coloana Adresa_Postala_Profesor din tabelul
+profesori cu valoarea 'mun. Chisinau', unde adresa este necunoscută.    </p>
 
-<p>   </p>
 <img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex1.png"  />
 
 <p><b><h2> Task 2 </h2></b></p> 
+<p>2. Sa se modifice schema tabelului grupe, ca sa corespunda urmatoarelor cerinte:
+a) Campul Cod_ Grupa sa accepte numai valorile unice si sa nu accepte valori necunoscute.
+b) Sa se tina cont ca cheie primarii, deja, este definitii asupra coloanei Id_ Grupa.  </p>
 
-<p>  </p>
 <img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex2.png" />
 
 <p><b><h2> Task 3 </h2></b></p> 
-
 <p><b>  </b></p> 
 <img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex3a.png" />
 <img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex3b.png" />
@@ -75,8 +77,48 @@ FROM profesori_new
 <img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex6.png" />
 
 <p><b><h2> Task 7 </h2></b></p> 
-
 <p><b>  </b></p> 
+```sql
+CREATE TABLE orarul(
+Ziua char(10) default 'Luni',
+[Ora] time,
+Bloc char(1) default 'B',
+[Auditoriu] int,
+[Id_Disciplina] int,
+[Id_Profesor] int,
+Id_Grupa int ,
+
+PRIMARY KEY(Id_Disciplina, Id_Profesor, Id_Grupa)
+);
+drop table orarul
+
+INSERT INTO orarul(Id_Disciplina, Id_Profesor, Id_Grupa, Ora, Auditoriu)
+SELECT DISTINCT dis.Id_Disciplina, pr.Id_Profesor, gr.Id_Grupa,
+	CASE
+		WHEN pr.Nume_Profesor = 'Bivol' AND pr.Prenume_Profesor = 'Ion' THEN '08:00'
+		WHEN pr.Nume_Profesor = 'Mircea' AND pr.Prenume_Profesor = 'Sorin' THEN '11:30'
+		WHEN pr.Nume_Profesor = 'Micu' AND pr.Prenume_Profesor = 'Elena' THEN '13:00'
+	END,
+	502
+FROM discipline as dis
+	JOIN studenti_reusita as sr
+ON dis.Id_Disciplina = sr.Id_Disciplina
+	JOIN grupe as gr
+ON gr.Id_Grupa = sr.Id_Grupa
+	JOIN profesori as pr
+ON pr.Id_Profesor = sr.Id_Profesor
+	WHERE((dis.Disciplina = 'Structuri de date si algoritmi' AND pr.Nume_Profesor = 'Bivol' AND pr.Prenume_Profesor = 'Ion')
+		OR
+	  (dis.Disciplina = 'Programe aplicative' AND pr.Nume_Profesor = 'Mircea' AND pr.Prenume_Profesor = 'Sorin')
+	    OR
+      (dis.Disciplina = 'Baze de date' AND pr.Nume_Profesor = 'Micu' AND pr.Prenume_Profesor = 'Elena'))
+	    AND
+	  gr.Cod_Grupa = 'INF171'
+
+
+SELECT * 
+FROM orarul
+```
 <img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex7.png" />
 
 
