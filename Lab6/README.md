@@ -24,7 +24,17 @@
 <p><b><h2> Task 5 </h2></b></p> 
 
 <p><b>  </b></p> 
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex5.sql" />
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex5.png" />
+
+<p><b><h2> Task 6 </h2></b></p> 
+
+<p><b>  </b></p> 
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex6.png" />
+
+<p><b><h2> Task 7 </h2></b></p> 
+
+<p><b>  </b></p> 
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex7.png" />
 
 
 
