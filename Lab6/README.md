@@ -1,29 +1,44 @@
 
 
 <p><b><h2> Ex.1 </h2></b></p>
-<p> Să se scrie o instrucțiune T-SQL, care ar popula coloana Adresa_Postala_Profesor din tabelul
-profesori cu valoarea 'mun. Chisinau', unde adresa este necunoscută.    </p>
+<p>Să se scrie o instrucțiune T-SQL, care ar popula coloana Adresa_Postala_Profesor din tabelul
+profesori cu valoarea 'mun. Chisinau', unde adresa este necunoscută.</p>
 
 <img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex1.png"  />
 
 <p><b><h2> Task 2 </h2></b></p> 
-<p>2. Sa se modifice schema tabelului grupe, ca sa corespunda urmatoarelor cerinte:
-a) Campul Cod_ Grupa sa accepte numai valorile unice si sa nu accepte valori necunoscute.
-b) Sa se tina cont ca cheie primarii, deja, este definitii asupra coloanei Id_ Grupa.  </p>
+<p>Să se modifice schema tabelului grupe, ca să corespundă urmatoarelor cerințe:</p>
+<p>a) Câmpul Cod_Grupa să accepte numai valorile unice și să nu accepte valori necunoscute.</p>
+<p>b) Să se țină cont de cheile primare, deja, sunt definite asupra coloanei Id_ Grupa.  </p>
 
 <img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex2.png" />
 
 <p><b><h2> Task 3 </h2></b></p> 
-<p><b>  </b></p> 
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex3a.png" />
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex3b.png" />
-  
-<p><b><h2> Task 4 </h2></b></p> 
+<p>La tabelul grupe, să se adauge 2 coloane noi Sef_grupa și Prof_Indrumator, ambele de tip
+INT. Și să se populeze câmpurile nou-create cu cele mai potrivite candidaturi în baza criteriilor
+de mai jos:
+<p>a) Șeful grupei trebuie să aibă cea mai bună reușită (medie) din grupă la toate formele de
+evaluare și la toate disciplinele. Un student nu poate fi șef de grupă la mai multe grupe.</p>
 
-<p><b>  </b></p> 
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex3a.png" />
+
+<p>b) Profesorul îndrumător trebuie să predea un număr maximal posibil de discipline la grupa
+dată. Dacă nu există o singură candidatură, care corespunde primei cerințe, atunci este
+ales din grupul de candidați acel cu identificatorul (Id_Profesor) minimal. Un profesor nu
+poate fi indrumător la mai multe grupe.</p>
+
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex3b.png" />
+
+<p><b><h2> Task 4 </h2></b></p> 
+<p>Să se scrie o instrucțiune T-SQL, care ar mări toate notele de evaluare șefilor de grupe cu un
+punct. Nota maximală (10) nu poate fi mărită.</p> 
+
 <img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex4.png" />
 
 <p><b><h2> Task 5 </h2></b></p> 
+<p>Să se creeze un tabel profesori_new, care include următoarele coloane: Id_Profesor, Nume_Profesor, Prenume_Profesor, Localitate, Adresa_1, Adresa_2.</p>
+
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex5.png" />
 
  ```sql
  CREATE TABLE profesori_new(
@@ -69,15 +84,18 @@ SET Adresa_2 = CASE
 SELECT *  
 FROM profesori_new
 ```
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex5.png" />
-
 <p><b><h2> Task 6 </h2></b></p> 
+<p>Să se insereze datele in tabelul orarul pentru Grupa='CIB171' (Id_ Grupa= 1) pentru ziua de
+luni. Toate lecțiile vor avea loc în blocul de studii 'B'.</p> 
 
-<p><b>  </b></p> 
 <img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex6.png" />
 
 <p><b><h2> Task 7 </h2></b></p> 
-<p><b>  </b></p> 
+<p>Să se scrie expresiile T-SQL necesare pentru a popula tabelul orarul pentru grupa INFl71,
+ziua de luni. </p> 
+
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex7.png" />
+
 ```sql
 CREATE TABLE orarul(
 Ziua char(10) default 'Luni',
@@ -119,7 +137,6 @@ ON pr.Id_Profesor = sr.Id_Profesor
 SELECT * 
 FROM orarul
 ```
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex7.png" />
 
 
 
