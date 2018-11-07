@@ -23,7 +23,8 @@
 
 <p><b><h2> Task 5 </h2></b></p> 
 
- sql CREATE TABLE profesori_new(
+ ```sql
+ CREATE TABLE profesori_new(
 	Id_Profesor int,
 	Nume_Profesor char(60) NOT NULL,
 	Prenume_Profesor char(60) NOT NULL,
@@ -65,7 +66,7 @@ SET Adresa_2 = CASE
 			   END
 SELECT *  
 FROM profesori_new
-sql
+```
 <img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex5.png" />
 
 <p><b><h2> Task 6 </h2></b></p> 
