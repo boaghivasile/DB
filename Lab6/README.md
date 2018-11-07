@@ -20,6 +20,10 @@
 
 <p><b>  </b></p> 
 <img src="<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex4.png" />.png" />
+<p><b><h2> Task 5 </h2></b></p> 
+
+<p><b>  </b></p> 
+<img src="<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex5.png" />.png" />
 
 
 
