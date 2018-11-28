@@ -161,9 +161,9 @@ WHERE sr.Nota >=5 AND sr.Tip_Evaluare = 'Examen' AND (pr.Nume_Profesor = 'Ion' O
 <p> Without Index </p>
 <img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex8A.PNG" />
 <p> With a nonclustered index </p>
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex8B.PNG" />
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex8b.PNG" />
 <p> Witha nonclstered column index </p>
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex8C.PNG" />
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex8c.PNG" />
 
 
 
