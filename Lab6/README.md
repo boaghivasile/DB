@@ -138,6 +138,33 @@ SELECT *
 FROM orarul
 ```
 
+<p><b><h2> Task 8 </h2></b></p> 
+<p>Să se scrie interogările de creare a indecșilor asupra tabelelor din baza de date universitatea
+pentru a asigura o performanță sporită la executarea interogărilor SELECT din Lucrarea
+practica 4. Rezultatele optimizării să fie analizate în baza planurilor de execuție, până la și
+după crearea indecșilor. </p> 
+
+```SQL
+CREATE NONCLUSTERED COLUMNSTORE INDEX id_student_column
+ON studenti (Id_Student)
+
+CREATE NONCLUSTERED INDEX id_student1
+ON studenti (Id_Student)
+
+
+SELECT distinct sr.Id_Student
+FROM studenti_reusita as sr
+JOIN profesori as pr
+ON sr.Id_Profesor = pr.Id_Profesor
+WHERE sr.Nota >=5 AND sr.Tip_Evaluare = 'Examen' AND (pr.Nume_Profesor = 'Ion' OR pr.Prenume_Profesor = 'Ion')
+```
+<p> Without Index </p>
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex8A.PNG" />
+<p> With a nonclustered index </p>
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex8B.PNG" />
+<p> Witha nonclstered column index </p>
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex8C.PNG" />
+
 
 
 
