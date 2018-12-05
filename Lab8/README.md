@@ -94,13 +94,12 @@ ALTER VIEW Grupe_View_LAB8_EX1 WITH SCHEMABINDING AS
 SELECT grupe.grupe.Id_Grupa, grupe.grupe.Cod_Grupa, grupe.grupe.Specialitate, grupe.grupe.Nume_Facultate 
 	FROM grupe.grupe
 WITH CHECK OPTION
-
 ```
 
 <p><b><h2> Task 4 </h2></b></p> 
 <p>Să se scrie instrucțiunile de testare a proprietăților noi definite.</p> 
 
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab8/Screens/Ex4.png"  />
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab8/Screens/Ex4.PNG"  />
 
 ```sql
 /*a)*/
@@ -116,7 +115,7 @@ values (98, 'Virgiliu', 'Tristan')
 <p>Să se rescrie 2 interogări formulate in exercițiile din capitolul 4, in așa fel încât interogările
 imbricate să fie redate sub forma expresiilor CTE.</p>
 
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab8/Screens/Ex5.png"  />
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab8/Screens/Ex5.PNG"  />
 
 ```sql
 
@@ -170,7 +169,7 @@ expresie-tabel recursiv.
 Să se observe instrucțiunea de după UNION ALL a membrului recursiv, precum și partea de
 până la UNION ALL reprezentata de membrul-ancora.</p> 
 
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab7/Screens/Ex6.png"  />
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab7/Screens/Ex6.PNG"  />
 
 ```declare @graf table(
 	id int, 
