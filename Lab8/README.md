@@ -20,11 +20,11 @@ GO
 create. Să se adauge comentariile respective referitoare la rezultatele executării acestor
 instrucțiuni.</p>
 
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab8/Screens/Ex2.png"  />
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab8/Screens/Ex2.PNG"  />
 
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab8/Screens/Ex2a.png"  />
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab8/Screens/Ex2a.PNG"  />
 
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab8/Screens/Ex2b.png"  />
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab8/Screens/Ex2b.PNG"  />
 
 ```sql
 /*INSERT*/
