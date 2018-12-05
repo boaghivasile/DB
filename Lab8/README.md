@@ -75,7 +75,8 @@ FROM VIEW_Interogarea10
 să nu fie posibilă modificarea sau ștergerea tabelelor pe care acestea sunt definite și viziunile
 să nu accepte operațiuni DML, daca condițiile clauzei WHERE nu sunt satisfăcute.</p>
 
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab8/Screens/Ex3.png"  />
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab8/Screens/Ex3.PNG"  />
+
 ```sql 
 /*a)*/
 ALTER VIEW Interogarea10 WITH SCHEMABINDING AS
