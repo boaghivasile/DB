@@ -1,6 +1,3 @@
-
-
-
 <p><b><h2> Ex.1 </h2></b></p>
 <p>Creați o diagramă a bazei de date, folosind forma de vizualizare standard, structura căreia este
 descrisă la începutul sarcinilor practice din capitolul 4.</p>
