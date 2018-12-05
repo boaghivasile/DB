@@ -170,7 +170,7 @@ expresie-tabel recursiv.
 Să se observe instrucțiunea de după UNION ALL a membrului recursiv, precum și partea de
 până la UNION ALL reprezentata de membrul-ancora.</p> 
 
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab7/Screens/Ex6.PNG"  />
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab8/Screens/Ex6.PNG"  />
 
 ```declare @graf table(
 	id int, 
