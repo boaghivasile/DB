@@ -32,6 +32,7 @@ Id_Grupa smallint,
 
 PRIMARY KEY(Ziua, Id_Disciplina, Id_Profesor, Id_Grupa)
 );
+
 ```
 <img src="https://github.com/boaghivasile/DB/blob/master/Lab7/Screens/Ex3a.png"  />
 
