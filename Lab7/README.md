@@ -20,6 +20,7 @@ identificatorul grupei (Id_ Grupa), ziua lecției (Z1), ora de început a lectie
 are loc lecția (Auditoriu).</p>
 
 <img src="https://github.com/boaghivasile/DB/blob/master/Lab7/Screens/Ex3.png"  />
+
 ```sql 
 CREATE TABLE orarul(
 Ziua char(10),
@@ -32,7 +33,6 @@ Id_Grupa smallint,
 
 PRIMARY KEY(Ziua, Id_Disciplina, Id_Profesor, Id_Grupa)
 );
-
 ```
 <img src="https://github.com/boaghivasile/DB/blob/master/Lab7/Screens/Ex3a.png"  />
 
