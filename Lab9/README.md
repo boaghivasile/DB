@@ -1,5 +1,5 @@
 <p><b><h2> Task 1 </h2></b></p>
-<pSă se creeze proceduri stocate în baza exercițiilor (2 exerciții) din capitolul 4. 
+<p>Să se creeze proceduri stocate în baza exercițiilor (2 exerciții) din capitolul 4. 
 Parametrii de intrare trebuie să corespundă criteriilor din clauzele WHERE ale exercițiilor respective.</p>
 
 <img src="https://github.com/boaghivasile/DB/blob/master/Lab9/Screens/Ex.1.PNG"  />
