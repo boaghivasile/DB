@@ -1,93 +1,199 @@
 
 
 
-<p><b><h2> Ex.1 </h2></b></p>
-<p>Să se scrie o instrucțiune T-SQL, care ar popula coloana Adresa_Postala_Profesor din tabelul
-profesori cu valoarea 'mun. Chisinau', unde adresa este necunoscută.</p>
+<p><b><h2> Task 1 </h2></b></p>
+<p>Să se modifice declansatorul inregistrare_noua, în așa fel, încât în cazul actualizării auditoriului să apară mesajul de informare, care, în afară de disciplina și ora, va afișa codul grupei afectate, ziua, blocul, auditoriul vechi și auditoriul nou.</p>
 
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex1.png"  />
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab10/Screens/Ex.1.PNG"  />
+
+```sql
+
+CREATE TRIGGER Inregistrare_Noua on orarul
+AFTER UPDATE
+AS
+BEGIN
+	IF UPDATE(Auditoriu)
+	SELECT 'Lecția: ' + UPPER(dis.Disciplina) + '  ' +
+			'Ora: ' + CAST(ins.Ora AS VARCHAR(5)) + '  ' +
+			'Aula inițială: ' + CAST(del.Auditoriu AS CHAR(3)) + '  ' +
+			'Aula finală: ' + CAST(ins.Auditoriu AS CHAR(3)) + '  ' +
+			'Grupa: ' + CAST(gr.Cod_Grupa AS VARCHAR(6)) + '  ' +
+			'Ziua: ' + CAST(ins.Ziua AS CHAR(10)) + '  ' +
+			'Blocu: ' + CAST(ins.Bloc AS CHAR(1))
+	FROM inserted ins
+		JOIN plan_studii.discipline dis ON dis.Id_Disciplina = ins.Id_Disciplina
+		JOIN deleted del ON del.Id_Disciplina = ins.Id_Disciplina
+		JOIN grupe.grupe gr ON gr.Id_Grupa = ins.Id_Grupa
+END;
+
+UPDATE orarul
+SET Auditoriu = 203
+```
 
 <p><b><h2> Task 2 </h2></b></p> 
-<p>Să se modifice schema tabelului grupe, ca să corespundă urmatoarelor cerințe:</p>
-<p>a) Câmpul Cod_Grupa să accepte numai valorile unice și să nu accepte valori necunoscute.</p>
-<p>b) Să se țină cont de cheile primare, deja, sunt definite asupra coloanei Id_ Grupa.  </p>
+<p>Să se creeze declansatorul, care ar asigura popularea corectă (consecutivă) a tabelelor studenti și studenti_reusita,
+ și ar permite evitarea erorilor la nivelul cheilor exteme.</p>
 
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex2.png" />
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab10/Screens/Ex.2.PNG" />
+
+```sql
+
+CREATE TRIGGER INSERT_STUDENTI_REUSITA
+ON studenti.studenti_reusita
+INSTEAD OF INSERT
+as
+BEGIN
+	DECLARE @ID_STUDENT INT = (SELECT Id_Student FROM inserted);
+	DECLARE @ID_DISCIPLINA INT = (SELECT Id_Disciplina FROM inserted);
+	DECLARE @ID_PROFESOR INT = (SELECT Id_Profesor FROM inserted);
+	DECLARE @ID_GRUPA INT = (SELECT Id_Grupa FROM inserted);
+	DECLARE @TIP_EVALUARE VARCHAR(60) = (SELECT Tip_Evaluare FROM inserted);
+	DECLARE @NOTA TINYINT = (SELECT Nota FROM inserted);
+	DECLARE @DATA_EVALUARE DATE = (SELECT Data_Evaluare FROM inserted);
+	
+	IF NOT EXISTS (
+		SELECT st.Id_Student 
+		FROM inserted AS ins
+			INNER JOIN studenti.studenti AS st ON ins.Id_Student = st.Id_Student
+	) BEGIN 
+		INSERT INTO studenti.studenti
+		VALUES (@ID_STUDENT, 'Boaghi', 'Vasile', '1998-01-24', 'rn.Criuleni, str.Pacii 12')
+	END;
+
+	INSERT INTO studenti.studenti_reusita
+	VALUES(@ID_STUDENT, @ID_DISCIPLINA, @ID_PROFESOR, @ID_GRUPA, @TIP_EVALUARE, @NOTA, @DATA_EVALUARE);
+END;
+
+INSERT INTO studenti.studenti_reusita 
+VALUES (2, 100, 110, 1, 'Test In', 9, '2018-01-25');
+
+SELECT COUNT(*)
+FROM studenti.studenti_reusita
+WHERE Tip_Evaluare = 'Test In'
+```
 
 <p><b><h2> Task 3 </h2></b></p> 
-<p>La tabelul grupe, să se adauge 2 coloane noi Sef_grupa și Prof_Indrumator, ambele de tip
-INT. Și să se populeze câmpurile nou-create cu cele mai potrivite candidaturi în baza criteriilor
-de mai jos:
-<p>a) Șeful grupei trebuie să aibă cea mai bună reușită (medie) din grupă la toate formele de
-evaluare și la toate disciplinele. Un student nu poate fi șef de grupă la mai multe grupe.</p>
+<p>Să se creeze un declanșator, care ar interzice micșorarea notelor în tabelul studenti_reusita și modificarea valorilor câmpului Data_Evaluare, unde valorile acestui câmp sunt nenule. Declanșatorul trebuie să se lanseze, numai dacă sunt afectate datele studenților din grupa "CIB 171".Se va afișa un mesaj de avertizare în cazul tentativei de a încălca constrângerea.</p>
 
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex3a.png" />
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab10/Screens/Ex.3a.PNG" />
 
-<p>b) Profesorul îndrumător trebuie să predea un număr maximal posibil de discipline la grupa
-dată. Dacă nu există o singură candidatură, care corespunde primei cerințe, atunci este
-ales din grupul de candidați acel cu identificatorul (Id_Profesor) minimal. Un profesor nu
-poate fi indrumător la mai multe grupe.</p>
+```sql
 
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex3b.png" />
+CREATE TRIGGER UPDATE_STUDENTI_REUSITA
+ON studenti.studenti_reusita
+AFTER UPDATE
+AS
+IF (
+	SELECT gr.Cod_Grupa
+	FROM grupe.grupe AS gr 
+		INNER JOIN inserted AS ins ON gr.Id_Grupa = ins.Id_Grupa
+) = 'CIB171'
+BEGIN
+	DECLARE @NOTA_VECHE TINYINT = (SELECT Nota FROM deleted);
+	DECLARE @NOTA_NOUA TINYINT = (SELECT Nota FROM inserted);
+
+	IF @NOTA_NOUA < @NOTA_VECHE
+		BEGIN
+			PRINT('The mark is not allowed to be decreased.');
+			ROLLBACK TRANSACTION;
+		END;
+
+	DECLARE @DATA_EVALUARE_VECHE DATE = (SELECT Data_Evaluare FROM deleted);
+	DECLARE @DATA_EVALUARE_NOUA DATE = (SELECT Data_Evaluare FROM inserted);
+
+	IF @DATA_EVALUARE_VECHE IS NOT NULL
+	IF(@DATA_EVALUARE_NOUA <> @DATA_EVALUARE_VECHE)
+		BEGIN
+			PRINT('The Data_evaluare is not allowed to be changed.');
+			ROLLBACK TRANSACTION;
+		END;
+END ELSE 
+	BEGIN
+		PRINT('Trigger runs only for grupe CIB171.');
+	END;
+
+UPDATE studenti.studenti_reusita
+set Nota = 6
+where Id_Student = 100 and Id_Disciplina = 105 and Id_Profesor = 110 and Id_Grupa = 1  and Tip_Evaluare = 'Examen'
+```
 
 <p><b><h2> Task 4 </h2></b></p> 
-<p>Să se scrie o instrucțiune T-SQL, care ar mări toate notele de evaluare șefilor de grupe cu un
-punct. Nota maximală (10) nu poate fi mărită.</p> 
+<p>Să se creeze un declanșator DDL care ar interzice modificarea coloanei ld_Disciplina în tabelele bazei de date universitatea cu afișarea mesajului respectiv.</p> 
 
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex4.png" />
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab10/Screens/Ex.4.PNG" />
+
+```sql
+
+CREATE TRIGGER Cant_Change_Id_Student
+ON DATABASE
+AFTER alter_table, drop_table
+AS
+BEGIN
+	IF EVENTDATA().value
+		('(EVENT_INSTANCE/AlterTableActionList/Alter/Columns/Name)[1]', 'nvarchar(max)') = 'Id_Disciplina'
+	BEGIN
+		PRINT('Alter or drop column Id_Discilina is not allowed.');
+		ROLLBACK;
+		RETURN;
+	END
+END;
+
+ALTER TABLE studenti.studenti_reusita
+ALTER COLUMN Id_Disciplina INT NOT NULL;
+```
 
 <p><b><h2> Task 5 </h2></b></p> 
-<p>Să se creeze un tabel profesori_new, care include următoarele coloane: Id_Profesor, Nume_Profesor, Prenume_Profesor, Localitate, Adresa_1, Adresa_2.</p>
+<p>Să se creeze un declanșator DDL care ar interzice modificarea schemei bazei de date în afara orelor de lucru.</p>
 
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex5.png" />
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab10/Screens/Ex.5.PNG" />
 
  ```sql
- CREATE TABLE profesori_new(
-	Id_Profesor int,
-	Nume_Profesor char(60) NOT NULL,
-	Prenume_Profesor char(60) NOT NULL,
-	Localitatea varchar(60) DEFAULT 'mun. Chisinau',
-	Adresa_1 varchar(255),
-	Adresa_2 varchar(255),
-	PRIMARY KEY ([Id_Profesor])
-);
+ 
+CREATE TRIGGER Changes_On_Time
+ON DATABASE
+AFTER alter_table
+AS
+BEGIN
+	DECLARE @TIME_START TIME = '08:00:00';
+	DECLARE @TIME_END TIME = '23:00:00';
+	DECLARE @CURRENT_TIME TIME = CONVERT (TIME, SYSDATETIME());
 
-INSERT INTO profesori_new
-([Id_Profesor], [Nume_Profesor], [Prenume_Profesor], Localitatea, [Adresa_1], [Adresa_2])
-(SELECT Id_Profesor, Nume_Profesor, Prenume_Profesor, Adresa_Postala_Profesor, Adresa_Postala_Profesor, Adresa_Postala_Profesor
-FROM profesori)
+	IF @CURRENT_TIME < @TIME_START or @CURRENT_TIME > @TIME_END
+		BEGIN
+			PRINT('Alter is not allowed outside the work time.');
+			ROLLBACK TRANSACTION;
+		END
+END;
 
-DROP table profesori_new
-
-UPDATE profesori_new
-SET Localitatea = CASE
-				WHEN CHARINDEX('bd.', Localitatea) > 0 THEN 
-					SUBSTRING(Adresa_1, 1, PATINDEX('%, bd%',Localitatea)-1) 
-				WHEN CHARINDEX('str.', Adresa_1) > 0 THEN 
-					SUBSTRING(Adresa_1, 1, PATINDEX('%, str%',Localitatea)-1) 
-				WHEN CHARINDEX('nau', Localitatea) > 0 THEN
-					SUBSTRING(Adresa_1, 1, CHARINDEX('nau',Localitatea)+2)
-				END
-UPDATE profesori_new
-SET Adresa_1 = CASE
-					WHEN CHARINDEX('str', Adresa_1) > 0 THEN 
-						SUBSTRING(Adresa_1, CHARINDEX('str', Adresa_1), 
-								PATINDEX('%, [0-9]%',Adresa_1) - CHARINDEX('str', Adresa_1)) 
-					WHEN CHARINDEX('bd', Adresa_1) > 0 THEN 
-						SUBSTRING(Adresa_1, CHARINDEX('bd', Adresa_1), 
-								PATINDEX('%, [0-9]%',Adresa_1) - CHARINDEX('bd', Adresa_1)) 
-			   END
-UPDATE profesori_new
-SET Adresa_2 = CASE
-					WHEN PATINDEX('%, [0-9]%', Adresa_2) > 0 THEN
-						SUBSTRING(Adresa_2, PATINDEX('%, [0-9]%',Adresa_2) + 1,  LEN(Adresa_2) - PATINDEX('%, [0-9]%', Adresa_2) + 1)
-			   END
-SELECT *  
-FROM profesori_new
+ALTER TABLE studenti.studenti_reusita
+ALTER COLUMN Id_Profesor INT NOT NULL;
 ```
-<p><b><h2> Task 6 </h2></b></p> 
-<p>Să se insereze datele in tabelul orarul pentru Grupa='CIB171' (Id_ Grupa= 1) pentru ziua de
-luni. Toate lecțiile vor avea loc în blocul de studii 'B'.</p> 
 
-<img src="https://github.com/boaghivasile/DB/blob/master/Lab6/Exercises/Ex6.png" />
+<p><b><h2> Task 6 </h2></b></p> 
+<p>Să se creeze un declanșator DDL care, la modificarea proprietăților coloanei ld_Profesor dintr-un tabel, ar face schimbări asemănătoare în mod automat în restul tabelelor.</p> 
+
+<img src="https://github.com/boaghivasile/DB/blob/master/Lab10/Screens/Ex.6.PNG" />
+
+```sql
+
+CREATE TRIGGER PROFESORI_NEW_CHANGES
+ON DATABASE
+AFTER ALTER_TABLE
+AS
+BEGIN
+	IF eventdata().value('(/EVENT_INSTANCE/AlterTableActionList/*/Columns/Name)[1]','nvarchar(max)') = 'Prenume_Profesor'    
+	 BEGIN  
+		DECLARE @COMMAND_1 VARCHAR(100) = eventdata().value('(/EVENT_INSTANCE/TSQLCommand/CommandText)[1]','nvarchar(max)') 
+		DECLARE @COMMAND_3 VARCHAR(100) = eventdata().value('(/EVENT_INSTANCE/ObjectName)[1]','nvarchar(max)') 
+
+		DECLARE @COMMAND_2 VARCHAR(100) = replace(@COMMAND_1, @COMMAND_3, 'profesori');
+		EXECUTE (@COMMAND_2) 
+		SET @COMMAND_2 = replace(@COMMAND_1, @COMMAND_3, 'profesori_new');
+		EXECUTE (@COMMAND_2)  
+	 END
+ END;
+
+ALTER TABLE cadre_didactice.profesori 
+ALTER COLUMN Prenume_Profesor CHAR(20);
+```
 
